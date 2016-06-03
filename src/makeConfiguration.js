@@ -2,6 +2,7 @@ import _ from 'lodash';
 import Map from 'es6-map';
 
 const userConfigurationIndex = new Map();
+const defaultUserConfiguration = {};
 
 /**
  * @typedef CSSModules~Options
@@ -14,7 +15,7 @@ const userConfigurationIndex = new Map();
  * @param {CSSModules~Options} userConfiguration
  * @returns {CSSModules~Options}
  */
-export default (userConfiguration = {}) => {
+export default (userConfiguration = defaultUserConfiguration) => {
     let configuration;
 
     configuration = userConfigurationIndex.get(userConfiguration);
