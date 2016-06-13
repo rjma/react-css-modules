@@ -35,7 +35,7 @@
     "react-dom": "^15.0.0-rc.1"
   },
   "scripts": {
-    "preinstall": "npm run build",
+    "preinstall": "npm i && npm run build",
     "pragmatist": "node ./node_modules/.bin/pragmatist --es5",
     "lint": "npm run pragmatist lint",
     "test": "npm run pragmatist test --type-annotations",
