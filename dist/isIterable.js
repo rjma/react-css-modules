@@ -14,7 +14,7 @@ var _isFunction3 = _interopRequireDefault(_isFunction2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ITERATOR_SYMBOL = (0, _isFunction3.default)(Symbol) && Symbol.iterator;
+var ITERATOR_SYMBOL = typeof Symbol !== 'undefined' && (0, _isFunction3.default)(Symbol) && Symbol.iterator;
 var OLD_ITERATOR_SYMBOL = '@@iterator';
 
 /**
@@ -39,4 +39,3 @@ exports.default = function (maybeIterable) {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=isIterable.js.map

@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _es6Map = require('es6-map');
+var _simpleMap = require('./simple-map');
 
-var _es6Map2 = _interopRequireDefault(_es6Map);
+var _simpleMap2 = _interopRequireDefault(_simpleMap);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var stylesIndex = new _es6Map2.default();
+var stylesIndex = new _simpleMap2.default();
 
 exports.default = function (styles, styleNames, errorWhenNotFound) {
     var appendClassName = void 0,
@@ -25,7 +25,8 @@ exports.default = function (styles, styleNames, errorWhenNotFound) {
             return styleNameIndex;
         }
     } else {
-        stylesIndexMap = stylesIndex.set(styles, new _es6Map2.default());
+        stylesIndexMap = new _simpleMap2.default();
+        stylesIndex.set(styles, new _simpleMap2.default());
     }
 
     appendClassName = '';
@@ -50,4 +51,3 @@ exports.default = function (styles, styleNames, errorWhenNotFound) {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=generateAppendClassName.js.map

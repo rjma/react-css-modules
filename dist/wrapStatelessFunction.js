@@ -29,8 +29,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * @see https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html#stateless-function-components
  */
-/* eslint-disable react/prop-types */
-
 exports.default = function (Component, defaultStyles, options) {
     var WrappedComponent = function WrappedComponent() {
         for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -71,7 +69,6 @@ exports.default = function (Component, defaultStyles, options) {
     (0, _assign3.default)(WrappedComponent, Component);
 
     return WrappedComponent;
-};
+}; /* eslint-disable react/prop-types */
 
 module.exports = exports['default'];
-//# sourceMappingURL=wrapStatelessFunction.js.map

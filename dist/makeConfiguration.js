@@ -16,13 +16,7 @@ var _forEach2 = require('lodash/forEach');
 
 var _forEach3 = _interopRequireDefault(_forEach2);
 
-var _es6Map = require('es6-map');
-
-var _es6Map2 = _interopRequireDefault(_es6Map);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var userConfigurationIndex = new _es6Map2.default();
 
 /**
  * @typedef CSSModules~Options
@@ -35,19 +29,10 @@ var userConfigurationIndex = new _es6Map2.default();
  * @param {CSSModules~Options} userConfiguration
  * @returns {CSSModules~Options}
  */
-
 exports.default = function () {
     var userConfiguration = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-    var configuration = void 0;
-
-    configuration = userConfigurationIndex.get(userConfiguration);
-
-    if (configuration) {
-        return configuration;
-    }
-
-    configuration = {
+    var configuration = {
         allowMultiple: false,
         mergeStyles: false,
         errorWhenNotFound: true
@@ -65,10 +50,7 @@ exports.default = function () {
         configuration[name] = value;
     });
 
-    userConfigurationIndex.set(userConfiguration, configuration);
-
     return configuration;
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=makeConfiguration.js.map

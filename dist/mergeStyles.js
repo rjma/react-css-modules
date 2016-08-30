@@ -26,4 +26,3 @@ exports.default = function (defaultStyles, styles) {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=mergeStyles.js.map

@@ -36,4 +36,3 @@ exports.default = function (styleNamePropertyValue, allowMultiple) {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=parseStyleName.js.map

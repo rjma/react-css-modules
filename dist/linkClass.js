@@ -16,9 +16,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _makeConfiguration = require('./makeConfiguration');
+var _objectUnfreeze = require('object-unfreeze');
 
-var _makeConfiguration2 = _interopRequireDefault(_makeConfiguration);
+var _objectUnfreeze2 = _interopRequireDefault(_objectUnfreeze);
 
 var _isIterable = require('./isIterable');
 
@@ -31,10 +31,6 @@ var _parseStyleName2 = _interopRequireDefault(_parseStyleName);
 var _generateAppendClassName = require('./generateAppendClassName');
 
 var _generateAppendClassName2 = _interopRequireDefault(_generateAppendClassName);
-
-var _objectUnfreeze = require('object-unfreeze');
-
-var _objectUnfreeze2 = _interopRequireDefault(_objectUnfreeze);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -76,9 +72,10 @@ var linkElement = function linkElement(element, styles, configuration) {
             }
 
             elementShallowCopy.props.className = appendClassName;
-            elementShallowCopy.props.styleName = null;
         }
     }
+
+    delete elementShallowCopy.props.styleName;
 
     if (elementIsFrozen) {
         Object.freeze(elementShallowCopy.props);
@@ -91,22 +88,19 @@ var linkElement = function linkElement(element, styles, configuration) {
 /**
  * @param {ReactElement} element
  * @param {Object} styles CSS modules class map.
- * @param {CSSModules~Options} userConfiguration
+ * @param {CSSModules~Options} configuration
  */
 
 exports.default = function (element) {
     var styles = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-    var userConfiguration = arguments[2];
+    var configuration = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
     // @see https://github.com/gajus/react-css-modules/pull/30
     if (!(0, _isObject3.default)(element)) {
         return element;
     }
 
-    var configuration = (0, _makeConfiguration2.default)(userConfiguration);
-
     return linkElement(element, styles, configuration);
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=linkClass.js.map

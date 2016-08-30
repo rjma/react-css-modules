@@ -12,10 +12,6 @@ var _isObject2 = require('lodash/isObject');
 
 var _isObject3 = _interopRequireDefault(_isObject2);
 
-var _linkClass = require('./linkClass');
-
-var _linkClass2 = _interopRequireDefault(_linkClass);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -23,6 +19,10 @@ var _react2 = _interopRequireDefault(_react);
 var _hoistNonReactStatics = require('hoist-non-react-statics');
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
+
+var _linkClass = require('./linkClass');
+
+var _linkClass2 = _interopRequireDefault(_linkClass);
 
 var _mergeStyles = require('./mergeStyles');
 
@@ -36,7 +36,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? _defaults(subClass, superClass) : _defaults(subClass, superClass); } /* eslint-disable react/prop-types */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /* eslint-disable react/prop-types */
 
 /**
  * @param {ReactClass} Component
@@ -44,7 +44,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @param {Object} options
  * @returns {ReactClass}
  */
-
 exports.default = function (Component, defaultStyles, options) {
     var WrappedComponent = function (_Component) {
         _inherits(WrappedComponent, _Component);
@@ -97,4 +96,3 @@ exports.default = function (Component, defaultStyles, options) {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=extendReactClass.js.map

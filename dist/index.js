@@ -16,6 +16,10 @@ var _wrapStatelessFunction = require('./wrapStatelessFunction');
 
 var _wrapStatelessFunction2 = _interopRequireDefault(_wrapStatelessFunction);
 
+var _makeConfiguration = require('./makeConfiguration');
+
+var _makeConfiguration2 = _interopRequireDefault(_makeConfiguration);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -36,10 +40,12 @@ var isReactComponent = function isReactComponent(maybeReactComponent) {
 var functionConstructor = function functionConstructor(Component, defaultStyles, options) {
     var decoratedClass = void 0;
 
+    var configuration = (0, _makeConfiguration2.default)(options);
+
     if (isReactComponent(Component)) {
-        decoratedClass = (0, _extendReactClass2.default)(Component, defaultStyles, options);
+        decoratedClass = (0, _extendReactClass2.default)(Component, defaultStyles, configuration);
     } else {
-        decoratedClass = (0, _wrapStatelessFunction2.default)(Component, defaultStyles, options);
+        decoratedClass = (0, _wrapStatelessFunction2.default)(Component, defaultStyles, configuration);
     }
 
     if (Component.displayName) {
@@ -69,4 +75,3 @@ exports.default = function () {
 };
 
 module.exports = exports['default'];
-//# sourceMappingURL=index.js.map
