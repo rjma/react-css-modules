@@ -1,8 +1,4 @@
 import _ from 'lodash';
-import Map from 'es6-map';
-
-const userConfigurationIndex = new Map();
-const defaultUserConfiguration = {};
 
 /**
  * @typedef CSSModules~Options
@@ -15,16 +11,8 @@ const defaultUserConfiguration = {};
  * @param {CSSModules~Options} userConfiguration
  * @returns {CSSModules~Options}
  */
-export default (userConfiguration = defaultUserConfiguration) => {
-    let configuration;
-
-    configuration = userConfigurationIndex.get(userConfiguration);
-
-    if (configuration) {
-        return configuration;
-    }
-
-    configuration = {
+export default (userConfiguration = {}) => {
+    const configuration = {
         allowMultiple: false,
         mergeStyles: false,
         errorWhenNotFound: true
@@ -41,8 +29,6 @@ export default (userConfiguration = defaultUserConfiguration) => {
 
         configuration[name] = value;
     });
-
-    userConfigurationIndex.set(userConfiguration, configuration);
 
     return configuration;
 };

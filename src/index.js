@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import extendReactClass from './extendReactClass';
 import wrapStatelessFunction from './wrapStatelessFunction';
+import makeConfiguration from './makeConfiguration';
 
 /**
  * @see https://github.com/gajus/react-css-modules#options
  */
-type OptionsType = {};
+type TypeOptions = {};
 
 /**
  * Determines if the given object has the signature of a class that inherits React.Component.
@@ -17,13 +18,15 @@ const isReactComponent = (maybeReactComponent: any): boolean => {
 /**
  * When used as a function.
  */
-const functionConstructor = (Component: Function, defaultStyles: Object, options: OptionsType): Function => {
+const functionConstructor = (Component: Function, defaultStyles: Object, options: TypeOptions): Function => {
     let decoratedClass;
 
+    const configuration = makeConfiguration(options);
+
     if (isReactComponent(Component)) {
-        decoratedClass = extendReactClass(Component, defaultStyles, options);
+        decoratedClass = extendReactClass(Component, defaultStyles, configuration);
     } else {
-        decoratedClass = wrapStatelessFunction(Component, defaultStyles, options);
+        decoratedClass = wrapStatelessFunction(Component, defaultStyles, configuration);
     }
 
     if (Component.displayName) {
@@ -38,7 +41,7 @@ const functionConstructor = (Component: Function, defaultStyles: Object, options
 /**
  * When used as a ES7 decorator.
  */
-const decoratorConstructor = (defaultStyles: Object, options: OptionsType): Function => {
+const decoratorConstructor = (defaultStyles: Object, options: TypeOptions): Function => {
     return (Component: Function) => {
         return functionConstructor(Component, defaultStyles, options);
     };

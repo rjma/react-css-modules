@@ -2,11 +2,10 @@ import _ from 'lodash';
 import React, {
     ReactElement
 } from 'react';
-import makeConfiguration from './makeConfiguration';
+import objectUnfreeze from 'object-unfreeze';
 import isIterable from './isIterable';
 import parseStyleName from './parseStyleName';
 import generateAppendClassName from './generateAppendClassName';
-import objectUnfreeze from 'object-unfreeze';
 
 const linkElement = (element: ReactElement, styles: Object, configuration: Object): ReactElement => {
     let appendClassName,
@@ -46,9 +45,10 @@ const linkElement = (element: ReactElement, styles: Object, configuration: Objec
             }
 
             elementShallowCopy.props.className = appendClassName;
-            elementShallowCopy.props.styleName = null;
         }
     }
+
+    delete elementShallowCopy.props.styleName;
 
     if (elementIsFrozen) {
         Object.freeze(elementShallowCopy.props);
@@ -61,15 +61,13 @@ const linkElement = (element: ReactElement, styles: Object, configuration: Objec
 /**
  * @param {ReactElement} element
  * @param {Object} styles CSS modules class map.
- * @param {CSSModules~Options} userConfiguration
+ * @param {CSSModules~Options} configuration
  */
-export default (element: ReactElement, styles = {}, userConfiguration): ReactElement => {
+export default (element: ReactElement, styles = {}, configuration = {}): ReactElement => {
     // @see https://github.com/gajus/react-css-modules/pull/30
     if (!_.isObject(element)) {
         return element;
     }
-
-    const configuration = makeConfiguration(userConfiguration);
 
     return linkElement(element, styles, configuration);
 };
